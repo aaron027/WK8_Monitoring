@@ -22,8 +22,8 @@ pipeline {
         AWS_REGION      = 'ap-southeast-2'
         VPCStackName    = 'VPCALBStack'
         VPCTemplate     = 'vpc-alb-app-db.yaml'
-        EC2StackName    = 'LinuxMachineDeploy'
-        EC2Template     = 'LinuxMachineDeploy.yaml'
+        EC2StackName    = 'LinuxMachineDeploy2'
+        EC2Template     = 'LinuxMachineDeploy2.yaml'
         InstanceType    = 't2.micro'
         InstanceCount   = 3
         SecurityPorts   = '[22,443,3000,8080,9100]' //SSH, HTTPS, grafana, cadvisor, node-exporter
