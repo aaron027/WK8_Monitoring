@@ -20,10 +20,10 @@ pipeline {
         SecurityGroupID = 'sg-02e3da4f6656b750c' //Change to your default VPC's default security group ID
         JenkinsServer   = 'jenkins.aaron027.bo-chen.info'   //Change to your JenkinsServer URL
         AWS_REGION      = 'ap-southeast-2'
-        VPCStackName    = 'VPCALBStack2'
+        VPCStackName    = 'VPCALBStack'
         VPCTemplate     = 'vpc-alb-app-d.yaml'
-        EC2StackName    = 'LinuxMachineDeploy2'
-        EC2Template     = 'LinuxMachineDeploy2.yaml'
+        EC2StackName    = 'LinuxMachineDeploy'
+        EC2Template     = 'LinuxMachineDeploy.yaml'
         InstanceType    = 't2.micro'
         InstanceCount   = 3
         SecurityPorts   = '[22,443,3000,8080,9100]' //SSH, HTTPS, grafana, cadvisor, node-exporter
