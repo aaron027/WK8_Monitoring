@@ -14,7 +14,7 @@ pipeline {
         ansiColor('xterm')
     }
     environment {
-        AWS_CRED        = 'AAWSCredentials1' //Change to yours
+        AWS_CRED        = 'AWSCredentials1' //Change to yours
         OwnerEmail      = 'adrien027@hotmail.com' //Change to yours
         S3BucketName    = 's3-monotiring-20220913' //Change to yours, used to save cfn yml files larger than 50KB
         SecurityGroupID = 'sg-02e3da4f6656b750c' //Change to your default VPC's default security group ID
