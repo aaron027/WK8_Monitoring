@@ -21,7 +21,7 @@ pipeline {
         JenkinsServer   = 'jenkins.aaron027.bo-chen.info'   //Change to your JenkinsServer URL
         AWS_REGION      = 'ap-southeast-2'
         VPCStackName    = 'VPCALBStack'
-        VPCTemplate     = 'vpc-alb-app-d.yaml'
+        VPCTemplate     = 'vpc-alb-app-db.yaml'
         EC2StackName    = 'LinuxMachineDeploy'
         EC2Template     = 'LinuxMachineDeploy.yaml'
         InstanceType    = 't2.micro'
