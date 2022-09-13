@@ -16,7 +16,7 @@ pipeline {
     environment {
         AWS_CRED        = 'AWSCredentials1' //Change to yours
         OwnerEmail      = 'adrien027@hotmail.com' //Change to yours
-        S3BucketName    = 's3-monitoring-20220914' //Change to yours, used to save cfn yml files larger than 50KB
+        S3BucketName    = 's3-monitoring-20220915' //Change to yours, used to save cfn yml files larger than 50KB
         SecurityGroupID = 'sg-0dee4344e621dfbe2' //Change to your default VPC's default security group ID
         JenkinsServer   = 'jenkins.aaron027.bo-chen.info'   //Change to your JenkinsServer URL
         AWS_REGION      = 'us-east-1'
@@ -36,7 +36,7 @@ pipeline {
         stage('CFN Create VPC_ALB..') {
             when {expression{return params.blCreateVPC}}
             steps {
-                withAWS(credentials: AWS_CRED, region: 'ap-southeast-2') {
+                withAWS(credentials: AWS_CRED, region: 'us-east-1') {
                     // some block
                     dir('cfn') {
                         sh '''
@@ -56,7 +56,7 @@ pipeline {
         stage('CFN Create Instance') {
             when {expression{return params.blCreateInstances}}
             steps {
-                withAWS(credentials: AWS_CRED, region: 'ap-southeast-2') {
+                withAWS(credentials: AWS_CRED, region: 'us-east-1') {
                     // some block
                     script {
                         timeout(10) {
@@ -84,7 +84,7 @@ pipeline {
             // ssh-keygen (press ENTER for passphrase)
             when {expression{return params.blTFApply}}
             steps {
-                withAWS(credentials: AWS_CRED, region: 'ap-southeast-2') {
+                withAWS(credentials: AWS_CRED, region: 'us-east-1') {
                     // some block
                     dir('terraform') {
                         sh '''
@@ -106,7 +106,7 @@ pipeline {
             when {expression{return params.blTestAnsible}}
             steps {
                 sleep 60
-                withAWS(credentials: AWS_CRED, region: 'ap-southeast-2') {
+                withAWS(credentials: AWS_CRED, region: 'us-east-1') {
                     // some block
                     dir('ansible') {
                         sh '''
@@ -119,7 +119,7 @@ pipeline {
         stage('Setup Instances') {
             when {expression{return params.blUpdateAWS}}
             steps {
-                withAWS(credentials: AWS_CRED, region: 'ap-southeast-2') {
+                withAWS(credentials: AWS_CRED, region: 'us-east-1') {
                     // jq must be installed
                     dir('terraform') {
                         script{
@@ -141,7 +141,7 @@ pipeline {
         stage('Destroy Instances') {
             when {expression{return params.blDestroy}}
             steps {
-                withAWS(credentials: AWS_CRED, region: 'ap-southeast-2') {
+                withAWS(credentials: AWS_CRED, region: 'us-east-1') {
                     // some block
                     dir('terraform') {
                         sh '''
