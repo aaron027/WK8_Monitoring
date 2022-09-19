@@ -17,9 +17,9 @@ pipeline {
         AWS_CRED        = 'AWSCredentials1' //Change to yours
         OwnerEmail      = 'adrien027@hotmail.com' //Change to yours
         S3BucketName    = 's3-monitoring-20220915' //Change to yours, used to save cfn yml files larger than 50KB
-        SecurityGroupID = 'sg-0dee4344e621dfbe2' //Change to your default VPC's default security group ID
+        SecurityGroupID = 'sg-02e3da4f6656b750c' //Change to your default VPC's default security group ID
         JenkinsServer   = 'jenkins.aaron027.bo-chen.info'   //Change to your JenkinsServer URL
-        AWS_REGION      = 'us-east-1'
+        AWS_REGION      = 'ap-southeast-2'
         VPCStackName    = 'VPCALBStack'
         VPCTemplate     = 'vpc-alb-app-db.yaml'
         EC2StackName    = 'LinuxMachineDeploy'
