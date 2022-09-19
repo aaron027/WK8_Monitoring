@@ -56,7 +56,7 @@ pipeline {
         stage('CFN Create Instance') {
             when {expression{return params.blCreateInstances}}
             steps {
-                withAWS(credentials: AWS_CRED, region: 'us-east-1') {
+                withAWS(credentials: AWS_CRED, region: 'ap-southeast-2') {
                     // some block
                     script {
                         timeout(10) {
@@ -84,7 +84,7 @@ pipeline {
             // ssh-keygen (press ENTER for passphrase)
             when {expression{return params.blTFApply}}
             steps {
-                withAWS(credentials: AWS_CRED, region: 'us-east-1') {
+                withAWS(credentials: AWS_CRED, region: 'ap-southeast-2') {
                     // some block
                     dir('terraform') {
                         sh '''
@@ -106,7 +106,7 @@ pipeline {
             when {expression{return params.blTestAnsible}}
             steps {
                 sleep 60
-                withAWS(credentials: AWS_CRED, region: 'us-east-1') {
+                withAWS(credentials: AWS_CRED, region: 'ap-southeast-2') {
                     // some block
                     dir('ansible') {
                         sh '''
@@ -119,7 +119,7 @@ pipeline {
         stage('Setup Instances') {
             when {expression{return params.blUpdateAWS}}
             steps {
-                withAWS(credentials: AWS_CRED, region: 'us-east-1') {
+                withAWS(credentials: AWS_CRED, region: 'ap-southeast-2') {
                     // jq must be installed
                     dir('terraform') {
                         script{
@@ -141,7 +141,7 @@ pipeline {
         stage('Destroy Instances') {
             when {expression{return params.blDestroy}}
             steps {
-                withAWS(credentials: AWS_CRED, region: 'us-east-1') {
+                withAWS(credentials: AWS_CRED, region: 'ap-southeast-2') {
                     // some block
                     dir('terraform') {
                         sh '''
